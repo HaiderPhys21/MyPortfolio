@@ -5,12 +5,14 @@ document.getElementById('nav-toggle').addEventListener('click', () => {
 
 // Contact form → Formspree integration
 const form = document.querySelector('.contact-form');
-// Point the form at your Formspree endpoint
+
+// Ensure the form posts to Formspree
 form.setAttribute('action', 'https://formspree.io/f/xnnzdqvp');
 form.setAttribute('method', 'POST');
 
 form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+  e.preventDefault(); // prevent normal submission
+
   const formData = new FormData(form);
 
   try {
