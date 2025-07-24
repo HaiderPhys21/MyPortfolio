@@ -74,7 +74,6 @@
   <section id="projects" class="section">
     <h2>Highlighted Projects</h2>
     <div class="projects-grid projects-offset">
-      <!-- cards unchanged -->
       <div class="project-card">
         <img src="images/cms-gnn.jpg" alt="Four-top quark CMS Project" />
         <h3>Four-Top-Quark Signal Classification</h3>
@@ -100,24 +99,45 @@
   <section id="skills" class="section">
     <h2>Skills & Technologies</h2>
     <div class="skills-container">
-      <!-- icons unchanged -->
-      <div class="skill-item"><img src="images/python-icon.png" alt="Python" /><span></span></div>
-      <div class="skill-item"><img src="images/pytorch-icon.png" alt="PyTorch" /><span></span></div>
-      <div class="skill-item"><img src="images/root-icon.png" alt="ROOT" /><span></span></div>
-      <div class="skill-item"><img src="images/gnn-icon.png" alt="GNN" /><span></span></div>
-      <div class="skill-item"><img src="images/quantum-icon.png" alt="PennyLane" /><span></span></div>
+      <div class="skill-item"><img src="images/python-icon.png" alt="Python" /><span>Python</span></div>
+      <div class="skill-item"><img src="images/pytorch-icon.png" alt="PyTorch" /><span>PyTorch</span></div>
+      <div class="skill-item"><img src="images/root-icon.png" alt="ROOT" /><span>ROOT</span></div>
+      <div class="skill-item"><img src="images/gnn-icon.png" alt="GNN" /><span>Graph Neural Networks</span></div>
+      <div class="skill-item"><img src="images/quantum-icon.png" alt="PennyLane" /><span>Quantum ML</span></div>
     </div>
   </section>
 
-  <!-- Contact unchanged -->
+  <!-- Contact -->
   <section id="contact" class="section contact-section">
     <h2>Contact Me</h2>
     <div class="contact-container">
       <img src="images/contact.jpg" alt="Contact" class="contact-img" />
-      <form class="contact-form">
-        <input type="text" placeholder="Name" required />
-        <input type="email" placeholder="Email" required />
-        <textarea rows="5" placeholder="Message" required></textarea>
+      <form
+        class="contact-form"
+        action="https://formspree.io/f/xnnzdqvp"
+        method="POST"
+      >
+        <!-- Anti-spam honeypot field (optional) -->
+        <input type="text" name="_gotcha" style="display:none" />
+
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+        />
+        <input
+          type="email"
+          name="_replyto"
+          placeholder="Your Email"
+          required
+        />
+        <textarea
+          name="message"
+          rows="5"
+          placeholder="Your Message"
+          required
+        ></textarea>
         <button type="submit" class="btn">Send Message</button>
       </form>
     </div>
