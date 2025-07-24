@@ -3,32 +3,36 @@ document.getElementById('nav-toggle').addEventListener('click', () => {
   document.getElementById('nav-menu').classList.toggle('active');
 });
 
-// Contact form submission handler
+// Contact form → Formspree integration
 const form = document.querySelector('.contact-form');
+// Point the form at your Formspree endpoint
+form.setAttribute('action', 'https://formspree.io/f/xnnzdqvp');
+form.setAttribute('method', 'POST');
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const name = form.querySelector('input[type="text"]').value.trim();
-  const email = form.querySelector('input[type="email"]').value.trim();
-  const message = form.querySelector('textarea').value.trim();
-  if (!name || !email || !message) {
-    alert('Please fill out all fields before sending.');
-    return;
-  }
+  const formData = new FormData(form);
 
-  // Simulate sending: replace with real endpoint when available
   try {
-    // Example: send to a real API endpoint
-    // await fetch('/api/contact', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ name, email, message })
-    // });
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
 
-    // For now, show confirmation
-    alert(`Thank you, ${name}! Your message has been sent.`);
-    form.reset();
-  } catch (err) {
-    console.error(err);
-    alert('Oops! Something went wrong. Please try again later.');
+    if (response.ok) {
+      alert('Thank you! Your message has been sent.');
+      form.reset();
+    } else {
+      const data = await response.json();
+      if (data.errors) {
+        alert(data.errors.map(err => err.message).join('\n'));
+      } else {
+        alert('Oops! There was a problem submitting your form.');
+      }
+    }
+  } catch (error) {
+    console.error('Formspree error:', error);
+    alert('Network error. Please try again later.');
   }
 });
